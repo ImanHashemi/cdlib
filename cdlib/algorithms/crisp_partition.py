@@ -25,7 +25,7 @@ except ModuleNotFoundError:
 
 import warnings
 import numpy as np
-from typing import Callable
+from typing import Callable, Dict
 from copy import deepcopy
 from cdlib.algorithms.internal import DER
 import community as louvain_modularity
@@ -467,7 +467,7 @@ def louvain(
     weight: str = "weight",
     resolution: float = 1.0,
     randomize: int = None,
-    init_partition = None,
+    partition = None,
 ) -> NodeClustering:
     """
     Louvain  maximizes a modularity score for each community.
@@ -511,7 +511,7 @@ def louvain(
     g = convert_graph_formats(g_original, nx.Graph)
 
     coms = louvain_modularity.best_partition(
-        g, weight=weight, resolution=resolution, randomize=randomize, partition=init_partition
+        g, weight=weight, resolution=resolution, randomize=randomize, partition=partition
     )
 
     # Reshaping the results
