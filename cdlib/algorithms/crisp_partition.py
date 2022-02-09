@@ -511,7 +511,7 @@ def louvain(
     g = convert_graph_formats(g_original, nx.Graph)
 
     coms = louvain_modularity.best_partition(
-        g, weight=weight, resolution=resolution, randomize=randomize, init_partition=init_partition
+        g, weight=weight, resolution=resolution, randomize=randomize, partition=init_partition
     )
 
     # Reshaping the results
